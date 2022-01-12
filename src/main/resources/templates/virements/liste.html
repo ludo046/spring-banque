@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+                      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Banque</title>
+        <link th:replace="fragments/liens :: liens">
+    </head>
+    <body>
+        <nav th:replace="fragments/navbar :: navbar"></nav>
+        <div class="container mt-4">
+            <h1 th:text="${titre}"></h1>
+            <br />
+            <a class="btn btn-primary" th:href="@{/virement/add}">Nouvelle virement</a>
+            <hr />
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    	<th>Compte</th>
+                    	<th>Date</th>
+                        <th>Montant</th>
+                        <th>Motif</th>
+                        <th>Beneficiaire</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="virements : ${virements}" >
+                    	<td th:text="${virements.compte}" class="align-middle"></td>
+                    	<td th:text="${#dates.format(virements.date, 'dd/MM/yyyy')}" class="align-middle">banque</td>
+                    	<td th:text="${virements.montant}" class="align-middle">banque</td>
+                        <td th:text="${virements.motif}" class="align-middle"></td>
+                        <td th:text="${virements.beneficiaire}" class="align-middle"></td>
+                        <td class="text-end">
+                        	<a th:href="@{/virement/update/{id}(id=${virements.id})}" class="btn btn-success">Modifier</a>
+                        	<a th:href="@{/virement/delete/{id}(id=${virements.id})}" class="btn btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>  
+        </div> 
+    </body>
+</html>

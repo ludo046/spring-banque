@@ -13,9 +13,9 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home(Model model) {
-		String titre = "Welcome Madeline";
+		String titre = "Welcome ludo";
 		model.addAttribute("titre", titre);
-		return "home";
+		return "redirect:/client/clients";
 	}
 
 }

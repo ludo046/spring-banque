@@ -9,7 +9,7 @@ import fr.diginamic.tpjpa05.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-	@Query("select u from User u where u.username= :name")
+	@Query("select u from User u where u.username= :username")
 	Optional<User> findUserWithName(String username);
 	
 }
